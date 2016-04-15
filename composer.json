@@ -1,0 +1,10 @@
+{
+    "name": "xedelweiss/telegram-api-wrapper",
+    "authors": [
+        {
+            "name": "Michael Sverdlikovsky",
+            "email": "xedelweiss@gmail.com"
+        }
+    ],
+    "require": {}
+}
