@@ -2,7 +2,13 @@
 
 require './vendor/autoload.php';
 
-// something goes here
+// trying to understand TL
+
+$schemaPath = './schema.json'; // is this last layer? (from https://core.telegram.org/schema/json)
+$schemaContent = file_get_contents($schemaPath);
+
+$schema = new \TelegramApi\TL\Schema($schemaContent);
+$schema->saveToPhp();
 
 //region Helpers
 /**

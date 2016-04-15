@@ -1,6 +1,7 @@
 <?php
 
 namespace TelegramApi;
+use TelegramApi\Api\Auth;
 
 /**
  * Class Connection
