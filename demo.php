@@ -53,8 +53,14 @@ $sampleMethodSchema = json_decode('{
 $item = new \TelegramApi\TL\Combinator\AggregateTypeConstructor($sampleConstructorSchema);
 //$item = new \TelegramApi\TL\Combinator\FunctionalCombinator($sampleMethodSchema);
 
-foreach ($item->getParams() as $param) {
+/**
+ * @var \TelegramApi\TL\Combinator\Param[] $params
+ */
+$params = $item->getParams();
+foreach ($params as $param) {
+    dump($param->getPhpTypeHint());
     dump($param->getPhpDoc());
+    dump('---');
 }
 //region Helpers
 /**

@@ -82,34 +82,17 @@ class Param
     
     public function getPhpDoc()
     {
-        $baseNamespace = 'TelegramApi\\Types\\';
-        $returnTypeNamespace = $this->getType()->getNamespace()
-            ? $this->getType()->getNamespace() . '\\'
-            : '';
-
         $name = Util::camelCase($this->getName());
-        $type = $baseNamespace . Util::camelCase($returnTypeNamespace, true) . $this->getType()->getId();
-
-        if ($this->getType() instanceof ReturnType\ArrayType) {
-            $type .= '[]';
-        }
+        $type = $this->getType()->getPhpDocType();
 
         return "{$type} \${$name}";
     }
 
     public function getPhpTypeHint()
     {
-        $baseNamespace = 'TelegramApi\\Types\\';
-        $returnTypeNamespace = $this->getType()->getNamespace()
-            ? $this->getType()->getNamespace() . '\\'
-            : '';
 
         $name = Util::camelCase($this->getName());
-        $type = $baseNamespace . Util::camelCase($returnTypeNamespace, true) . $this->getType()->getId();
-
-        if ($this->getType() instanceof ReturnType\ArrayType) {
-            $type = 'array';
-        }
+        $type = $this->getType()->getPhpTypeHint();
 
         return "{$type} \${$name}";
     }

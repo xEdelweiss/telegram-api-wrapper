@@ -35,7 +35,7 @@ class ArrayType extends ReturnType
      */
     public function getNamespace()
     {
-        return $this->itemType->getNamespace();
+        return $this->getItemType()->getNamespace();
     }
 
     /**
@@ -43,7 +43,17 @@ class ArrayType extends ReturnType
      */
     public function getId()
     {
-        return $this->itemType->getId();
+        return $this->getItemType()->getId();
+    }
+
+    public function getPhpTypeHint()
+    {
+        return 'array';
+    }
+
+    public function getPhpDocType()
+    {
+        return parent::getPhpDocType() . '[]';
     }
 
 }

@@ -12,6 +12,7 @@ namespace TelegramApi\TL;
 use TelegramApi\TL\ReturnType\AggregateType;
 use TelegramApi\TL\ReturnType\ArrayType;
 use TelegramApi\TL\ReturnType\BuiltInType;
+use TelegramApi\Util;
 
 class ReturnType
 {
@@ -72,6 +73,28 @@ class ReturnType
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getPhpTypeHint()
+    {
+        return $this->__toString();
+    }
+
+    public function getPhpDocType()
+    {
+        return $this->__toString();
+    }
+
+    public function __toString()
+    {
+        $baseNamespace = 'TelegramApi\\Types\\';
+        $returnTypeNamespace = $this->getNamespace()
+            ? $this->getNamespace() . '\\'
+            : '';
+
+        $type = $baseNamespace . Util::camelCase($returnTypeNamespace, true) . $this->getId();
+
+        return $type;
     }
 
     protected function parseFullId($fullId)
