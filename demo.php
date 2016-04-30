@@ -45,13 +45,13 @@ $sampleMethodSchema = json_decode('{
         "type": "int"
     }, {
         "name": "limit",
-        "type": "int"
+        "type": "!X"
     }],
     "type": "photos.Photos"
 }', true);
 
-$item = new \TelegramApi\TL\Combinator\AggregateTypeConstructor($sampleConstructorSchema);
-//$item = new \TelegramApi\TL\Combinator\FunctionalCombinator($sampleMethodSchema);
+//$item = new \TelegramApi\TL\Combinator\AggregateTypeConstructor($sampleConstructorSchema);
+$item = new \TelegramApi\TL\Combinator\FunctionalCombinator($sampleMethodSchema);
 
 /**
  * @var \TelegramApi\TL\Combinator\Param[] $params

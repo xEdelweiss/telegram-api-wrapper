@@ -77,12 +77,16 @@ class ReturnType
 
     public function getPhpTypeHint()
     {
-        return $this->__toString();
+        return preg_match('/[.!]/ui', $this->getId())
+            ? $this->getId()
+            : $this->__toString();
     }
 
     public function getPhpDocType()
     {
-        return $this->__toString();
+        return preg_match('/[.!]/ui', $this->getId())
+            ? 'mixed'
+            : $this->__toString();
     }
 
     public function __toString()
@@ -92,7 +96,8 @@ class ReturnType
             ? $this->getNamespace() . '\\'
             : '';
 
-        $type = $baseNamespace . Util::camelCase($returnTypeNamespace, true) . $this->getId();
+        $id = $this->getId();
+        $type = $baseNamespace . Util::camelCase($returnTypeNamespace, true) . $id;
 
         return $type;
     }
