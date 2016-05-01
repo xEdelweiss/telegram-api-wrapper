@@ -24,9 +24,11 @@ class ReturnType
         'long',
         'double',
         'string',
-        'null',
-        'vector',
-        'Bool',
+//        'null',
+//        'Bool',
+//        'True',
+//        'False',
+//        'Null'
     ];
 
     /**
@@ -77,21 +79,22 @@ class ReturnType
 
     public function getPhpTypeHint()
     {
-        return preg_match('/[.!]/ui', $this->getId())
-            ? $this->getId()
+        return preg_match('/[.!#]/ui', $this->getId())
+            ? ''
             : $this->__toString();
     }
 
     public function getPhpDocType()
     {
-        return preg_match('/[.!]/ui', $this->getId())
-            ? 'mixed'
+        return preg_match('/[.!#]/ui', $this->getId())
+            ? $this->getId()
             : $this->__toString();
     }
 
     public function __toString()
     {
-        $baseNamespace = 'TelegramApi\\Types\\';
+        // $baseNamespace = 'TelegramApi\\Types\\';
+        $baseNamespace = '';
         $returnTypeNamespace = $this->getNamespace()
             ? $this->getNamespace() . '\\'
             : '';

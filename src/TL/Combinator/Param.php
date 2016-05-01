@@ -85,15 +85,15 @@ class Param
         $name = Util::camelCase($this->getName());
         $type = $this->getType()->getPhpDocType();
 
-        return "{$type} \${$name}";
+        return trim("{$type} \${$name}");
     }
 
     public function getPhpTypeHint()
     {
-
         $name = Util::camelCase($this->getName());
-        $type = $this->getType()->getPhpTypeHint();
+        // $type = $this->getType()->getPhpTypeHint();
+        $type = '';
 
-        return "{$type} \${$name}";
+        return trim("{$type} \${$name}");
     }
 }

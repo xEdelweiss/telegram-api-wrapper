@@ -125,7 +125,7 @@ abstract class Combinator
     }
 
     /**
-     * @return array
+     * @return Param[]
      */
     public function getParams()
     {
